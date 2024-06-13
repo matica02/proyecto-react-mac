@@ -1,0 +1,22 @@
+.main {
+  padding: 50px;
+  margin: 50px 50px;
+  background: rgba(142, 135, 135, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.6px);
+  -webkit-backdrop-filter: blur(6.6px);
+  border: 1px solid rgba(142, 135, 135, 0.3);
+  transition: margin 2s;
+}
+
+.main:hover {
+  margin: 0px 0px;
+}
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 8rem;
+  text-align: center;
+  margin: 80px;
+}
