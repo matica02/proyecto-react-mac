@@ -8,6 +8,7 @@ import {
   Button,
   Heading,
   Flex,
+  Box,
 } from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CartWidget from "../CartWidget/CartWidget";
@@ -17,13 +18,13 @@ const NavBar = () => {
     <>
       <Flex justify={'space-between'} align={'center'} height={'120px'} width={'100%'} paddingTop={'80px'} paddingBottom={'80px'}>
         <Menu>
-          <MenuButton as={Button} rightIcon={<RxHamburgerMenu/>} className="nav-bar"></MenuButton>
-          <MenuList>
-            <MenuItem className="menu-item">Volkswagen</MenuItem>
-            <MenuItem className="menu-item">Mercedes</MenuItem>
-            <MenuItem className="menu-item">BMW</MenuItem>
-            <MenuItem className="menu-item">Audi</MenuItem>
-            <MenuItem className="menu-item">Porsche</MenuItem>
+          <MenuButton padding='30px 10px 30px 4px' backgroundColor="transparent" _hover={{ backgroundColor: 'orange' }} as={Button} rightIcon={<RxHamburgerMenu fontSize='40px'/>} margin={'50px'}></MenuButton>
+          <MenuList border='1px' backgroundColor='blanchedalmond' fontFamily='"Oswald", sans-serif' fontSize='30px'>
+            <MenuItem backgroundColor='blanchedalmond'>Volkswagen</MenuItem>
+            <MenuItem backgroundColor='blanchedalmond'>Mercedes</MenuItem>
+            <MenuItem backgroundColor='blanchedalmond'>BMW</MenuItem>
+            <MenuItem backgroundColor='blanchedalmond'>Audi</MenuItem>
+            <MenuItem backgroundColor='blanchedalmond'>Porsche</MenuItem>
           </MenuList>
         </Menu>
         <Heading><img className="golf-sinfondo" src="../img/golf-sinfondo.png" alt="This is an image of a Volkswagen Golf R"></img></Heading>

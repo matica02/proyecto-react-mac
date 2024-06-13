@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text,Button, Bu
 
 const Item = ({ nombre, img, precio }) => {
   return (
-    <Card maxW="sm" marginBottom={'50px'}>
+    <Card maxW="sm" marginBottom={'50px'} backgroundColor='transparent' border='1px'>
       <CardBody>
         <Image
           src={img}
@@ -13,8 +13,8 @@ const Item = ({ nombre, img, precio }) => {
           objectFit={"cover"}
         />
         <Stack mt="6" spacing="3">
-          <Heading size="md">{nombre}</Heading>
-          <Text color="blue.600" fontSize="2xl">
+          <Heading size="lg" fontFamily='"Oswald", sans-serif'>{nombre}</Heading>
+          <Text color="black" fontSize="35px" fontFamily='"Oswald", sans-serif'>
             ${precio}
           </Text>
         </Stack>
@@ -22,10 +22,10 @@ const Item = ({ nombre, img, precio }) => {
       <Divider />
       <CardFooter>
         <ButtonGroup spacing="2">
-          <Button variant="solid" colorScheme="blue">
+          <Button variant="solid" backgroundColor='lightgreen' fontFamily='"Oswald", sans-serif' fontSize='20px'>
             Buy now
           </Button>
-          <Button variant="ghost" colorScheme="blue">
+          <Button variant="ghost" colorScheme="black" fontFamily='"Oswald", sans-serif' fontSize='20px' border='1px'>
             Add to cart
           </Button>
         </ButtonGroup>
