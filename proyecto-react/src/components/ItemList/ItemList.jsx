@@ -4,7 +4,12 @@ import Item from "../Item/Item";
 
 const ItemList = ({ productos }) => {
   return (
-    <Flex wrap={"wrap"} justify={"center"} align={"center"} justifyContent={"space-around"}>
+    <Flex
+      wrap={"wrap"}
+      justify={"center"}
+      align={"center"}
+      justifyContent={"space-around"}
+    >
       {productos.map((prod) => (
         <Box key={prod.id}>
           <Item {...prod} />
