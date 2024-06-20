@@ -11,6 +11,7 @@ const Item = ({ nombre, img, precio }) => {
           w={"350px"}
           h={"350px"}
           objectFit={"cover"}
+          _hover:width={'380px'}
         />
         <Stack mt="6" spacing="3">
           <Heading size="lg" fontFamily='"Oswald", sans-serif'>{nombre}</Heading>
