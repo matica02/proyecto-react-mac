@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import "./ItemListContainer.css";
+import stylesILC from "./ItemListContainer.module.css";
 import { getProducts } from "../../data/asyncMock";
 import ItemList from "../ItemList/ItemList";
 
@@ -15,12 +15,12 @@ const ItemListContainer = ({ title }) => {
 
   return (
     <Flex
-      className={"main"}
+      className={stylesILC.main}
       direction={"column"}
       justify={"center"}
       align={"center"}
     >
-      <h1>{title}</h1>
+      <h1 className={stylesILC.title}>{title}</h1>
       <ItemList productos={productos} />
     </Flex>
   );
