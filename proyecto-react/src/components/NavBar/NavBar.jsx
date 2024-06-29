@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -39,19 +40,19 @@ const NavBar = () => {
             fontFamily='"Oswald", sans-serif'
             fontSize="30px"
           >
-            <MenuItem backgroundColor="blanchedalmond">Volkswagen</MenuItem>
-            <MenuItem backgroundColor="blanchedalmond">Mercedes</MenuItem>
-            <MenuItem backgroundColor="blanchedalmond">BMW</MenuItem>
-            <MenuItem backgroundColor="blanchedalmond">Audi</MenuItem>
-            <MenuItem backgroundColor="blanchedalmond">Porsche</MenuItem>
+            <MenuItem backgroundColor="blanchedalmond"><Link to='categorias/VolkswagenGroup'>Volkswagen Group</Link></MenuItem>
+            <MenuItem backgroundColor="blanchedalmond"><Link to='categorias/Mercedes'>Mercedes</Link></MenuItem>
+            <MenuItem backgroundColor="blanchedalmond"><Link to='categorias/BMW'>BMW</Link></MenuItem>
           </MenuList>
         </Menu>
         <Heading>
-          <img
-            width='350px'
-            src="../img/golf-sinfondo.png"
-            alt="This is an image of a Volkswagen Golf R"
-          ></img>
+          <Link to='/'>
+            <img
+              width='350px'
+              src="../img/golf-sinfondo.png"
+              alt="This is an image of a Volkswagen Golf R">
+            </img>
+          </Link>
         </Heading>
         <CartWidget />
       </Flex>

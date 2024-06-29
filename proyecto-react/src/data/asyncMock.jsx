@@ -4,7 +4,7 @@ export const productos = [
         nombre: "Bugatti Chiron",
         precio: 150,
         img: "../img/bugatti.png",
-        categoria:'Volkswagen Group',
+        categoria:'VolkswagenGroup',
         stock:'5',
         descripcion:''
     },
@@ -13,7 +13,7 @@ export const productos = [
         nombre: "Bentley Continental GT",
         precio: 130,
         img: "../img/bentley.png",
-        categoria:'Volkswagen Group',
+        categoria:'VolkswagenGroup',
         stock:'5',
         descripcion:''
         
@@ -23,7 +23,7 @@ export const productos = [
         nombre: "Lamborghini Aventador",
         precio: 120,
         img: "./img/lamborghini.png",
-        categoria:'Volkswagen Group',
+        categoria:'VolkswagenGroup',
         stock:'5',
         descripcion:''
     },
@@ -32,7 +32,7 @@ export const productos = [
         nombre: "Porsche GT3RS",
         precio: 110,
         img: "../img/porsche.png" ,
-        categoria:'Volkswagen Group',
+        categoria:'VolkswagenGroup',
         stock:'5',
         descripcion:''
     },
@@ -41,7 +41,7 @@ export const productos = [
         "nombre": "Audi R8",
         "precio": 100,
         "img": "../img/audir8.png",
-        categoria:'Volkswagen Group',
+        categoria:'VolkswagenGroup',
         stock:'5',
         descripcion:''
     },
@@ -68,7 +68,7 @@ export const productos = [
         nombre: "Volkswagen Golf R",
         precio: 70,
         img: "../img/volkswagen.png",
-        categoria:'Volkswagen Group',
+        categoria:'VolkswagenGroup',
         stock:'5',
         descripcion:''
     }
@@ -79,5 +79,23 @@ export const getProducts = () => {
         setTimeout(() => {
             resolve(productos)
         }, 1000)
+    })
+}
+
+export const getProductsByCategory = (categoria) => {
+    return new Promise((resolve) => {
+        const productosFiltrados = productos.filter((prod)=> prod.categoria === categoria)
+        setTimeout(() => {
+            resolve(productosFiltrados)
+        }, 2000) 
+    })
+}
+
+export const getProductById = (id) => {
+    return new Promise((resolve) => {
+        const productoFiltrado = productos.find((prod) => prod.id === parseInt(id))
+        setTimeout(()=> {
+            resolve(productoFiltrado)
+        }, 2000)
     })
 }

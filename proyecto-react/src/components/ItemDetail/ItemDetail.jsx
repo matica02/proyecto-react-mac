@@ -1,19 +1,18 @@
-import React from "react";
+import React from 'react'
 import {
-  Card,
-  CardBody,
-  CardFooter,
-  Stack,
-  Heading,
-  Text,
-  Button,
-  ButtonGroup,
-  Divider,
-  Image,
-} from "@chakra-ui/react";
-import {Link} from 'react-router-dom'
+    Card,
+    CardBody,
+    CardFooter,
+    Stack,
+    Heading,
+    Text,
+    Button,
+    ButtonGroup,
+    Divider,
+    Image,
+  } from "@chakra-ui/react";
 
-const Item = ({ nombre, img, precio, id }) => {
+const ItemDetail = (nombre , img , descripcion , precio , stock) => {
   return (
     <Card
       maxW="sm"
@@ -36,6 +35,9 @@ const Item = ({ nombre, img, precio, id }) => {
           <Text color="black" fontSize="35px" fontFamily='"Oswald", sans-serif'>
             ${precio}
           </Text>
+          <Text color="black" fontSize="35px" fontFamily='"Oswald", sans-serif'>
+            ${descripcion}
+          </Text>
         </Stack>
       </CardBody>
       <Divider />
@@ -56,12 +58,12 @@ const Item = ({ nombre, img, precio, id }) => {
             fontSize="20px"
             border="1px"
           >
-            <Link to={`/producto/${id}`}>Details</Link>
+            Buy Now
           </Button>
         </ButtonGroup>
       </CardFooter>
     </Card>
-  );
-};
+  )
+}
 
-export default Item;
+export default ItemDetail
