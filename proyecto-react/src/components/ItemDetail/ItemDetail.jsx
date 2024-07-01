@@ -1,26 +1,21 @@
-import React from 'react'
+import React from "react";
 import {
-    Card,
-    CardBody,
-    CardFooter,
-    Stack,
-    Heading,
-    Text,
-    Button,
-    ButtonGroup,
-    Divider,
-    Image,
-  } from "@chakra-ui/react";
-import ItemCount from '../ItemCount/ItemCount';
+  Card,
+  CardBody,
+  CardFooter,
+  Stack,
+  Heading,
+  Text,
+  Button,
+  ButtonGroup,
+  Divider,
+  Image,
+} from "@chakra-ui/react";
+import ItemCount from "../ItemCount/ItemCount";
 
-const ItemDetail = ({nombre , img , descripcion , precio , stock}) => {
+const ItemDetail = ({ nombre, img, descripcion, precio, stock }) => {
   return (
-    <Card
-      maxW="xlg"
-      backgroundColor="transparent"
-      border="1px"
-      margin={"50px"}
-    >
+    <Card maxW="xlg" backgroundColor="transparent" border="1px" margin={"50px"}>
       <CardBody>
         <Image
           src={img}
@@ -62,18 +57,11 @@ const ItemDetail = ({nombre , img , descripcion , precio , stock}) => {
           >
             Buy Now
           </Button>
-          <Button 
-            variant="ghost"
-            colorScheme="black"
-            fontFamily='"Oswald", sans-serif'
-            fontSize="20px"
-          >
-            <ItemCount initialValue={1} stock={stock}/>
-          </Button>
         </ButtonGroup>
+        <ItemCount initialValue={1} stock={stock} />
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default ItemDetail
+export default ItemDetail;

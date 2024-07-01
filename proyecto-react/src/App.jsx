@@ -12,8 +12,8 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' element={<ItemListContainer title={'Sports Cars Scale Models'}/>} />
-          <Route path='/categorias/:categoryId' element={<ItemListContainer/>} />
-          <Route path='/producto/:productId' element={<ItemDetailContainer/>}/>
+          <Route path='/categorias/:categoryId' element={<ItemListContainer title={'Sports Cars Scale Models'}/>} />
+          <Route path='/producto/:productId' element={<ItemDetailContainer title={'Sports Cars Scale Models'}/>}/>
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

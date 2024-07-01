@@ -1,21 +1,22 @@
 import useCounter from "../hooks/useCounter";
-import { Button } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 
 const ItemCount = ({ initialValue, stock }) => {
   const { count, incrementar, decrementar } = useCounter(initialValue, stock);
 
   return (
-    <div>
+    <Flex>
       <Button
         _hover={{ backgroundColor: "transparent" }}
-        paddingBottom={"7px"}
         fontSize={"30px"}
         backgroundColor={"transparent"}
         onClick={decrementar}
       >
         -
       </Button>
-      <span>{count}</span>
+      <Text fontFamily={'"Oswald", sans-serif'} fontSize={"25px"} fontWeight={'bold'}>
+        {count}
+      </Text>
       <Button
         _hover={{ backgroundColor: "transparent" }}
         fontSize={"30px"}
@@ -24,7 +25,7 @@ const ItemCount = ({ initialValue, stock }) => {
       >
         +
       </Button>
-    </div>
+    </Flex>
   );
 };
 
