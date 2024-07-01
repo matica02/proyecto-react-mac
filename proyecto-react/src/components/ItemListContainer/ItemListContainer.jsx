@@ -8,15 +8,17 @@ import { BarLoader } from "react-spinners";
 
 const ItemListContainer = ({ title }) => {
   const [productos, setProductos] = useState([]);
-  const { categoryId } = useParams()
-  const [loading, setLoading] = useState(true)
+  const { categoryId } = useParams();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(true)
-    const dataProductos = categoryId ? getProductsByCategory(categoryId) : getProducts()
+    setLoading(true);
+    const dataProductos = categoryId
+      ? getProductsByCategory(categoryId)
+      : getProducts();
     dataProductos
       .then((prod) => setProductos(prod))
       .catch((error) => console.log(error))
-      .finally(() => setLoading(false))
+      .finally(() => setLoading(false));
   }, [categoryId]);
 
   return (
@@ -27,12 +29,7 @@ const ItemListContainer = ({ title }) => {
       align={"center"}
     >
       <h1 className={stylesILC.title}>{title}</h1>
-      {
-        loading ?
-        <BarLoader />
-        :
-        <ItemList productos={productos} />
-      }
+      {loading ? <BarLoader /> : <ItemList productos={productos} />}
     </Flex>
   );
 };
