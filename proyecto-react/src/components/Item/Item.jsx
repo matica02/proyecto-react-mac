@@ -12,8 +12,9 @@ import {
   Image,
 } from "@chakra-ui/react";
 import {Link} from 'react-router-dom'
+import ItemCount from "../ItemCount/ItemCount";
 
-const Item = ({ nombre, img, precio, id }) => {
+const Item = ({ nombre, img, precio, id , stock}) => {
   return (
     <Card
       maxW="sm"
@@ -51,12 +52,21 @@ const Item = ({ nombre, img, precio, id }) => {
           </Button>
           <Button
             variant="ghost"
+            _hover={{ backgroundColor: "pink" }}
             colorScheme="black"
             fontFamily='"Oswald", sans-serif'
             fontSize="20px"
             border="1px"
           >
             <Link to={`/producto/${id}`}>Details</Link>
+          </Button>
+          <Button 
+            variant="ghost"
+            colorScheme="black"
+            fontFamily='"Oswald", sans-serif'
+            fontSize="20px"
+          >
+            <ItemCount initialValue={1} stock={stock}/>
           </Button>
         </ButtonGroup>
       </CardFooter>

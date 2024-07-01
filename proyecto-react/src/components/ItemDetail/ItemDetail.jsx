@@ -11,14 +11,15 @@ import {
     Divider,
     Image,
   } from "@chakra-ui/react";
+import ItemCount from '../ItemCount/ItemCount';
 
-const ItemDetail = (nombre , img , descripcion , precio , stock) => {
+const ItemDetail = ({nombre , img , descripcion , precio , stock}) => {
   return (
     <Card
-      maxW="sm"
-      marginBottom={"50px"}
+      maxW="xlg"
       backgroundColor="transparent"
       border="1px"
+      margin={"50px"}
     >
       <CardBody>
         <Image
@@ -35,8 +36,8 @@ const ItemDetail = (nombre , img , descripcion , precio , stock) => {
           <Text color="black" fontSize="35px" fontFamily='"Oswald", sans-serif'>
             ${precio}
           </Text>
-          <Text color="black" fontSize="35px" fontFamily='"Oswald", sans-serif'>
-            ${descripcion}
+          <Text color="black" fontSize="25px" fontFamily='"Oswald", sans-serif'>
+            {descripcion}
           </Text>
         </Stack>
       </CardBody>
@@ -53,12 +54,21 @@ const ItemDetail = (nombre , img , descripcion , precio , stock) => {
           </Button>
           <Button
             variant="ghost"
+            _hover={{ backgroundColor: "lightGreen" }}
             colorScheme="black"
             fontFamily='"Oswald", sans-serif'
             fontSize="20px"
             border="1px"
           >
             Buy Now
+          </Button>
+          <Button 
+            variant="ghost"
+            colorScheme="black"
+            fontFamily='"Oswald", sans-serif'
+            fontSize="20px"
+          >
+            <ItemCount initialValue={1} stock={stock}/>
           </Button>
         </ButtonGroup>
       </CardFooter>

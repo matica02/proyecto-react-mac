@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./NavBar.module.css";
 import {
   Menu,
   MenuButton,
@@ -8,7 +7,6 @@ import {
   Button,
   Heading,
   Flex,
-  Box,
 } from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CartWidget from "../CartWidget/CartWidget";
@@ -27,9 +25,9 @@ const NavBar = () => {
       >
         <Menu>
           <MenuButton
-            padding="30px 10px 30px 4px"
+            padding="30px 10px 30px 2px"
             backgroundColor="transparent"
-            _hover={{ backgroundColor: "orange" }}
+            _hover={{ backgroundColor: "lightBlue" }}
             as={Button}
             rightIcon={<RxHamburgerMenu fontSize="40px" />}
             margin={"50px"}
@@ -40,6 +38,7 @@ const NavBar = () => {
             fontFamily='"Oswald", sans-serif'
             fontSize="30px"
           >
+            <MenuItem backgroundColor="blanchedalmond"><Link to='/'>HOME</Link></MenuItem>
             <MenuItem backgroundColor="blanchedalmond"><Link to='categorias/VolkswagenGroup'>Volkswagen Group</Link></MenuItem>
             <MenuItem backgroundColor="blanchedalmond"><Link to='categorias/Mercedes'>Mercedes</Link></MenuItem>
             <MenuItem backgroundColor="blanchedalmond"><Link to='categorias/BMW'>BMW</Link></MenuItem>
