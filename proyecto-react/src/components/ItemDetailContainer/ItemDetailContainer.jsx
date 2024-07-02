@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../data/asyncMock";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { BarLoader } from "react-spinners";
 
