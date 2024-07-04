@@ -1,7 +1,7 @@
 import useCounter from "../hooks/useCounter";
 import { Button, Flex, Text } from "@chakra-ui/react";
 
-const ItemCount = ({ initialValue, stock }) => {
+const ItemCount = ({ initialValue, stock, onAdd }) => {
   const { count, incrementar, decrementar } = useCounter(initialValue, stock);
 
   return (
@@ -25,6 +25,11 @@ const ItemCount = ({ initialValue, stock }) => {
       >
         +
       </Button>
+      <Button onClick={() => onAdd(count)} 
+        variant="solid"
+        backgroundColor="lightgreen"
+        fontFamily='"Oswald", sans-serif'
+        fontSize="20px">Add to Cart</Button>
     </Flex>
   );
 };

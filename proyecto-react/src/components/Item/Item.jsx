@@ -43,16 +43,8 @@ const Item = ({ nombre, img, precio, id, stock }) => {
       <CardFooter>
         <ButtonGroup spacing="2">
           <Button
-            variant="solid"
-            backgroundColor="lightgreen"
-            fontFamily='"Oswald", sans-serif'
-            fontSize="20px"
-          >
-            Add to Cart
-          </Button>
-          <Button
             variant="ghost"
-            _hover={{ backgroundColor: "pink" }}
+            backgroundColor= "pink"
             colorScheme="black"
             fontFamily='"Oswald", sans-serif'
             fontSize="20px"
@@ -61,7 +53,6 @@ const Item = ({ nombre, img, precio, id, stock }) => {
             <Link to={`/producto/${id}`}>Details</Link>
           </Button>
         </ButtonGroup>
-        <ItemCount initialValue={1} stock={stock} />
       </CardFooter>
     </Card>
   );

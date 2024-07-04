@@ -12,8 +12,12 @@ import {
   Image,
 } from "@chakra-ui/react";
 import ItemCount from "../ItemCount/ItemCount";
+import { ToastContainer, toast } from 'react-toastify';
 
 const ItemDetail = ({ nombre, img, descripcion, precio, stock }) => {
+  const onAdd = (quantity) => {
+    toast(`Agregaste ${quantity} productos`)
+  }
   return (
     <Card maxW="xlg" backgroundColor="transparent" border="1px" margin={"50px"}>
       <CardBody>
@@ -38,7 +42,7 @@ const ItemDetail = ({ nombre, img, descripcion, precio, stock }) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        <ButtonGroup spacing="2">
+        {/* <ButtonGroup spacing="2">
           <Button
             variant="solid"
             backgroundColor="lightgreen"
@@ -57,9 +61,10 @@ const ItemDetail = ({ nombre, img, descripcion, precio, stock }) => {
           >
             Buy Now
           </Button>
-        </ButtonGroup>
-        <ItemCount initialValue={1} stock={stock} />
+        </ButtonGroup> */}
+        <ItemCount initialValue={1} stock={stock} onAdd={onAdd}/>
       </CardFooter>
+      <ToastContainer />
     </Card>
   );
 };
