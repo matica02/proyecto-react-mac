@@ -14,7 +14,11 @@ const ItemCount = ({ initialValue, stock, onAdd }) => {
       >
         -
       </Button>
-      <Text fontFamily={'"Oswald", sans-serif'} fontSize={"25px"} fontWeight={'bold'}>
+      <Text
+        fontFamily={'"Oswald", sans-serif'}
+        fontSize={"25px"}
+        fontWeight={"bold"}
+      >
         {count}
       </Text>
       <Button
@@ -25,11 +29,15 @@ const ItemCount = ({ initialValue, stock, onAdd }) => {
       >
         +
       </Button>
-      <Button onClick={() => onAdd(count)} 
+      <Button
+        onClick={() => onAdd(count)}
         variant="solid"
         backgroundColor="lightgreen"
         fontFamily='"Oswald", sans-serif'
-        fontSize="20px">Add to Cart</Button>
+        fontSize="20px"
+      >
+        Add to Cart
+      </Button>
     </Flex>
   );
 };
