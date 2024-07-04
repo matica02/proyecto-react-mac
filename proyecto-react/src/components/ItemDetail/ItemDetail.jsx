@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardBody,
@@ -13,11 +13,20 @@ import {
 } from "@chakra-ui/react";
 import ItemCount from "../ItemCount/ItemCount";
 import { ToastContainer, toast } from "react-toastify";
+import Context from "../../context/CartContext";
 
-const ItemDetail = ({ nombre, img, descripcion, precio, stock }) => {
+const ItemDetail = ({ id, nombre, img, descripcion, precio, stock }) => {
+  const {addItem} = useContext(Context)
   const onAdd = (quantity) => {
-    toast(`Agregaste ${quantity} productos`);
+    const item = {
+      id,
+      nombre,
+      precio
+    }
+    addItem(item , quantity)
+      toast(`Agregaste ${quantity} productos`);
   };
+
   return (
     <Card maxW="xlg" backgroundColor="transparent" border="1px" margin={"50px"}>
       <CardBody>
