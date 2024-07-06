@@ -15,6 +15,8 @@ import {
 import Context from "../../context/CartContext";
 import { IoIosRemoveCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { RiDeleteBin7Fill } from "react-icons/ri";
+
 
 const Cart = () => {
   const { cart, getTotalPrice, removeItem, clearCart } = useContext(Context);
@@ -34,7 +36,6 @@ const Cart = () => {
             <Th>Quantity</Th>
             <Th>Price</Th>
             <Th>Subtotal</Th>
-            <Th></Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -48,10 +49,10 @@ const Cart = () => {
                 {
                   <Button
                     onClick={() => removeItem(prod.id)}
-                    _hover={{ backgroundColor: "transparent" }}
+                    _hover={{ backgroundColor: "transparent", color: 'red' }}
                     backgroundColor={"transparent"}
                   >
-                    <IoIosRemoveCircle fontSize={"40px"} />
+                    <IoIosRemoveCircle fontSize={"30px"} />
                   </Button>
                 }
               </Td>
@@ -61,12 +62,11 @@ const Cart = () => {
       </Table>
       <Flex justify={"space-between"} margin={"30px 60px 0px 0px"}>
         <Button
-          border={"1px"}
-          _hover={{ backgroundColor: "red" }}
-          backgroundColor={"transparent"}
           onClick={() => clearCart()}
+          _hover={{ backgroundColor: "transparent", color: 'red' }} 
+          backgroundColor={"transparent"}
         >
-          Clear Cart
+          <RiDeleteBin7Fill fontSize={'40px'}/>
         </Button>
         <Text>Total: ${getTotalPrice()}</Text>
         <Text textDecoration={"underline"} color={"green"}>

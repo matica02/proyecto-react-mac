@@ -60,7 +60,7 @@ const ItemDetail = ({ id, nombre, img, descripcion, precio, stock }) => {
           :
           <Flex textDecoration={'underline'} fontSize={'30px'}>
             <ChakraLink as={Link} to='/cart'>Checkout</ChakraLink>
-            <ChakraLink as={Link} to='/cart' marginLeft={'30px'}>Continue shopping</ChakraLink>
+            <ChakraLink as={Link} to='/' marginLeft={'30px'}>Continue shopping</ChakraLink>
           </Flex>  
         }
       </CardFooter>
