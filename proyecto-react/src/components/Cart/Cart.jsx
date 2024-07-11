@@ -70,7 +70,7 @@ const Cart = () => {
         </Button>
         <Text>Total: ${getTotalPrice()}</Text>
         <Text textDecoration={"underline"} color={"green"}>
-          Proceed to payment
+          <Link to={'/checkout'}>Proceed to payment</Link> 
         </Text>
       </Flex>
     </TableContainer>

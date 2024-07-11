@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { CartContextProvider } from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
+import Checkout from "./components/Checkout/Checkout";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               path='/cart' 
               element={<Cart />}
             />
+            <Route path="/checkout" element={<Checkout />} />
             <Route 
               path="*" 
               element={<PageNotFound />}
