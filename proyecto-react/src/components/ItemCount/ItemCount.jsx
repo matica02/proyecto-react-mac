@@ -1,4 +1,4 @@
-import useCounter from "../hooks/useCounter";
+import useCounter from "../../hooks/useCounter";
 import { Button, Flex, Text } from "@chakra-ui/react";
 
 const ItemCount = ({ initialValue, stock, onAdd }) => {
