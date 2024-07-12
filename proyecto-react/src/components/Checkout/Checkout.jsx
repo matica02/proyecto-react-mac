@@ -52,22 +52,22 @@ const Checkout = () => {
     if (!user.name) {
       errors.name = "Obligatory field";
     } else if (user.name.length < 3 || user.name.length >= 20) {
-      errors.name = "3 Words minimum, 20 maximum";
+      errors.name = "Name must be 3 words minimum, 20 maximum";
     }
     if (!user.email) {
       errors.email = "Obligatory field";
     } else if (!/\S+@\S+\.\S+/.test(user.email)) {
-      errors.email = "Email not valid";
+      errors.email = "Email is not valid";
     }
     if (!user.repeatedEmail) {
       errors.repeatedEmail = "Obligatory field";
     } else if (user.repeatedEmail != user.email) {
-      errors.repeatedEmail = "Not the same Email";
+      errors.repeatedEmail = "Not exactly the same Email";
     }
     if (!user.phone) {
       errors.phone = "Obligatory field";
     } else if (!/^\d{10}$/.test(user.phone)) {
-      errors.phone = "Must be 10 digits long";
+      errors.phone = "Phone number must be 10 digits long";
     }
     if (!card.cardNumber) {
       errors.cardNumber = "Obligatory field";
