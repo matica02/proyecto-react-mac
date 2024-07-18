@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { CartContextProvider } from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
@@ -33,7 +33,10 @@ function App() {
               path='/cart' 
               element={<Cart />}
             />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route 
+              path="/checkout" 
+              element={<Checkout />} 
+              />
             <Route 
               path="*" 
               element={<PageNotFound />}
