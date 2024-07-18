@@ -39,7 +39,7 @@ const ItemCount = ({ initialValue, stock, onAdd }) => {
         Add to Cart
       </Button>
     </Flex>
-  );
-};
+  )
+}
 
 export default ItemCount;

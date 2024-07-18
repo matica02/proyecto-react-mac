@@ -8,11 +8,12 @@ import {
   Button,
   FormHelperText,
 } from "@chakra-ui/react";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { addDoc, collection, getDoc, Timestamp, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Context from "../../context/CartContext";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const [user, setUser] = useState({
@@ -20,84 +21,91 @@ const Checkout = () => {
     email: "",
     repeatedEmail: "",
     phone: "",
-  });
+  })
 
   const [card, setCard] = useState({
     cardNumber: "",
     cardName: "",
     expiryDate: "",
     cvv: "",
-  });
+  })
 
-  const [error, setError] = useState({});
+  const [error, setError] = useState({})
 
-  const { cart, getTotalPrice } = useContext(Context);
+  const { cart, getTotalPrice, clearCart } = useContext(Context)
+
+  const navigate = useNavigate()
 
   const updateUser = (event) => {
     setUser((user) => ({
       ...user,
-      [event.target.name]: event.target.value,
-    }));
-  };
+      [event.target.name]: event.target.value
+    }))
+  }
 
   const updateCard = (event) => {
     setCard((card) => ({
       ...card,
       [event.target.name]: event.target.value,
-    }));
-  };
+    }))
+  }
 
   const validateForm = () => {
-    const errors = {};
+    const errors = {}
     if (!user.name) {
-      errors.name = "Obligatory field";
+      errors.name = "Obligatory field"
     } else if (user.name.length < 3 || user.name.length >= 20) {
-      errors.name = "Name must be 3 words minimum, 20 maximum";
+      errors.name = "Name must be 3 words minimum, 20 maximum"
     }
     if (!user.email) {
-      errors.email = "Obligatory field";
+      errors.email = "Obligatory field"
     } else if (!/\S+@\S+\.\S+/.test(user.email)) {
-      errors.email = "Email is not valid";
+      errors.email = "Email is not valid"
     }
     if (!user.repeatedEmail) {
-      errors.repeatedEmail = "Obligatory field";
+      errors.repeatedEmail = "Obligatory field"
     } else if (user.repeatedEmail != user.email) {
-      errors.repeatedEmail = "Not exactly the same Email";
+      errors.repeatedEmail = "Not exactly the same Email"
     }
     if (!user.phone) {
-      errors.phone = "Obligatory field";
+      errors.phone = "Obligatory field"
     } else if (!/^\d{10}$/.test(user.phone)) {
-      errors.phone = "Phone number must be 10 digits long";
+      errors.phone = "Phone number must be 10 digits long"
     }
     if (!card.cardNumber) {
       errors.cardNumber = "Obligatory field";
     } else if (!/^\d{16}$/.test(card.cardNumber)) {
-      errors.cardNumber = "Card number must be 16 digits long";
+      errors.cardNumber = "Card number must be 16 digits long"
     }
     if (!card.cardName) {
-      errors.cardName = "Obligatory field";
+      errors.cardName = "Obligatory field"
     }
     if (!card.expiryDate) {
       errors.expiryDate = "Obligatory field";
     } else {
       const [month, year] = card.expiryDate.split("/");
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth() + 1
+      const currentYear = currentDate.getFullYear() % 100
       if (
         !/^\d{2}\/\d{2}$/.test(card.expiryDate) ||
         +month < 1 ||
         +month > 12 ||
-        +year === 0
+        +year === 0 ||
+        (+year < currentYear || (+year === currentYear && +month < currentMonth))
       ) {
-        errors.expiryDate = "Expiry date must be valid and in MM/YY format";
+        errors.expiryDate =
+          "Expiry date must be valid, in MM/YY format, and not in the past";
       }
     }
     if (!card.cvv) {
-      errors.cvv = "Obligatory field";
+      errors.cvv = "Obligatory field"
     } else if (!/^\d{3}$/.test(card.cvv)) {
-      errors.cvv = "CVV must be 3 digits long";
+      errors.cvv = "CVV must be 3 digits long"
     }
-    setError(errors);
-    return Object.keys(errors).length === 0;
-  };
+    setError(errors)
+    return Object.keys(errors).length === 0
+  }
 
   const getOrder = async () => {
     if (!validateForm()) {
@@ -107,7 +115,7 @@ const Checkout = () => {
       toast("No products in cart");
       return;
     }
-    const ordersCollection = collection(db, "orders");
+    const ordersCollection = collection(db, "orders")
     try {
       const order = {
         buyer: user,
@@ -119,19 +127,32 @@ const Checkout = () => {
           cardName: card.cardName,
           expiryDate: card.expiryDate,
           cvv: card.cvv,
-        },
-      };
-      const orderRef = await addDoc(ordersCollection, order);
+        }
+      }
+
+      for(const item of cart){
+        const productRef = doc(db, 'productos', item.id)
+        const productDoc = await getDoc(productRef)
+        const currentStock = productDoc.data().stock
+
+        await updateDoc(productRef, {
+          stock: currentStock - item.quantity
+        })
+      }
+      const orderRef = await addDoc(ordersCollection, order)
+      clearCart()
       Swal.fire({
         title: "Order Number:",
         text: orderRef.id,
         icon: "success",
         confirmButtonText: "Done",
-      });
+      }).then(() => {
+        navigate("/")
+      })
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   return (
     <Flex marginLeft={"65px"} direction={"column"} w={"50%"}>

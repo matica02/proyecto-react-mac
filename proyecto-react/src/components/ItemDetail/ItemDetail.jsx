@@ -17,18 +17,22 @@ import Context from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 const ItemDetail = ({ id, nombre, img, descripcion, precio, stock }) => {
-  const [quantity, setQuantity] = useState(0);
-  const { addItem } = useContext(Context);
+  const [quantity, setQuantity] = useState(0)
+  const { addItem } = useContext(Context)
   const onAdd = (quantity) => {
     const item = {
       id,
       nombre,
       precio,
-    };
-    setQuantity(quantity);
-    addItem(item, quantity);
-    toast(`Agregaste ${quantity} productos`);
-  };
+    }
+    setQuantity(quantity)
+    addItem(item, quantity)
+    if(quantity === 0){
+      toast(`Select amount`)
+    }else{
+      toast(`${quantity} ${item.nombre} added to cart`)
+    }
+  }
 
   return (
     <Card
@@ -61,7 +65,7 @@ const ItemDetail = ({ id, nombre, img, descripcion, precio, stock }) => {
       <Divider />
       <CardFooter>
         {quantity === 0 ? (
-          <ItemCount initialValue={1} stock={stock} onAdd={onAdd} />
+          <ItemCount initialValue={0} stock={stock} onAdd={onAdd} />
         ) : (
           <Flex textDecoration={"underline"} fontSize={"30px"}>
             <ChakraLink as={Link} to="/cart">
@@ -75,7 +79,7 @@ const ItemDetail = ({ id, nombre, img, descripcion, precio, stock }) => {
       </CardFooter>
       <ToastContainer />
     </Card>
-  );
-};
+  )
+}
 
 export default ItemDetail;
